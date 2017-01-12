@@ -1,4 +1,16 @@
-.ace_editor.ace-eclipse {
-    border: 1px solid darkgray !important;
-    height: 18px !important;
+.tablar-value-td {
+    border: 1px solid darkgray;
+    width: 255px;
+}
+
+.tablar-value-td > pre {
+    margin: 0;
+}
+
+.tablar-editor-options > *{
+    visibility: hidden;
+}
+
+.tablar tr:hover .tablar-editor-options > *{
+    visibility: visible;
 }

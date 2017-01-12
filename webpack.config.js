@@ -1,9 +1,17 @@
+var webpack = require('webpack');
+var path = require('path');
 module.exports = {
-    entry: './example/app.js',
+    context: path.resolve(__dirname, 'example'),
+    entry: {
+        javascript: ['babel-polyfill','./app.js'],
+        html: './index.html'
+    },
     output: {
-        path: './example/build',
+        path: 'build',
+        publicPath: 'build',
         filename: 'bundle.js'
     },
+    devtool: 'cheap-module-eval-source-map',
     module: {
         loaders: [
             {
@@ -13,17 +21,20 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react']
                 }
-            }, {
-                test: /\.css$/,
-                loaders: [ 'style-loader', 'css-loader' ]
-            }, 
-            { test: /\.json$/, loader: 'json' }
+            },
+            { test: /\.css$/, loaders: [ 'style-loader', 'css-loader' ] },
+            { test: /\.json$/, loader: 'json' },
+            { test: /\.html$/, loader: "file?name=[name].[ext]" }
         ]
     },
     devServer: {
         inline: true,
         contentBase: './example',
         port: 3333,
-        hot: true
-    }
+        hot: true,
+        progress: true
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ]
 };
