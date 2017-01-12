@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Tablar from '../lib/tablar';
 
+import '../lib/tablar.css';
+
 import './app.css';
 
 class App extends React.Component {

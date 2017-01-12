@@ -5,16 +5,25 @@ module.exports = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-                presets: ['es2015', 'react']
-            }
-        },{
-            test: /\.css$/,
-            loaders: [ 'style-loader', 'css-loader' ]
-        },{ test: /\.json$/, loader: 'json' }]
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel',
+                query: {
+                    presets: ['es2015', 'react']
+                }
+            }, {
+                test: /\.css$/,
+                loaders: [ 'style-loader', 'css-loader' ]
+            }, 
+            { test: /\.json$/, loader: 'json' }
+        ]
+    },
+    devServer: {
+        inline: true,
+        contentBase: './example',
+        port: 3333,
+        hot: true
     }
 };
